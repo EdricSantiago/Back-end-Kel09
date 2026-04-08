@@ -1,5 +1,5 @@
 const express = require('express');
-const Account = require('../models/account');
+const Account = require('../models/accountModel');
 
 const route = express.Router();
 
@@ -27,6 +27,21 @@ module.exports = (app) => {
                 request.body.userId
         })
         await account.save();
+        return response.status(200).json(account);
+    });
+
+    route.put('/:id', async (request, response) => {
+        const id = request.params.id;
+        const account = await Account.findByIdAndUpdate(id, 
+            {balance : request.body.balance},
+            {new: true}
+        );
+        return response.status(200).json(account);
+    });
+
+    route.delete('/:id', async (request, response) => {
+        const id = request.params.id;
+        const account = await Account.findByIdAndDelete(id);
         return response.status(200).json(account);
     });
 }
