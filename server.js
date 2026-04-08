@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const connectDB = require('./config/database');
 
 connectDB().then(() => {
-    console.log("Berhasil");
+    console.log("Berhasil 🔥");
 }).catch(() => {
     console.error(err);
 });
