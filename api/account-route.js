@@ -15,5 +15,18 @@ module.exports = (app) => {
         const id = request.params.id;
         const account = await Account.findById(id);
         return response.status(200).json(account);
-    })
+    });
+
+    route.post('/', async (request, response) => {
+        const account = new Account({
+            accountNumber: 
+                request.body.accountNumber,
+            balance: 
+                request.body.balance,
+            userId: 
+                request.body.userId
+        })
+        await account.save();
+        return response.status(200).json(account);
+    });
 }
