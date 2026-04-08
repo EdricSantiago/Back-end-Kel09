@@ -30,7 +30,7 @@ Membangun REST API sederhana untuk simulasi sistem bank digital, mencakup:
 - [ ] Setup project & install dependencies
 - [ ] Buat struktur folder
 - [ ] Endpoint autentikasi (register & login)
- [✅️] Endpoint rekening
+  [✅️] Endpoint rekening
 - [ ] Endpoint transaksi
 - [ ] Testing dengan Postman
 
