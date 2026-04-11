@@ -1,12 +1,12 @@
 const server = require('./server');
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = server.listen(port, (err) => {
     if (err) {
     console.error('Failed to start the server.');
     process.exit(1);
     } else {
-    console.log(`Server runs at port ${port}`);
+    console.log(`Server runs at port ${port} 🚀`);
     }
 });
 

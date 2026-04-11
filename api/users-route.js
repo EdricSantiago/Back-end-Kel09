@@ -8,13 +8,13 @@ module.exports = (app) => {
     app.use('/users', route);
 
     route.get('/', async (request, response) => {
-        const users = await User.find();
+        const users = await User.find().select('-password');
         return response.status(200).json(users);
     });
 
     route.get('/:id', async (request, response) => {
         const id = request.params.id;
-        const user = await User.findById(id);
+        const user = await User.findById(id).select('-password');
         return response.status(200).json(user);
     });
 
@@ -25,16 +25,16 @@ module.exports = (app) => {
 
         if (username) updateData.username = username;
         if (password) {
-            updateData.password = await bcrypt.hash(password, 10); //
+            updateData.password = await bcrypt.hash(password, 10); 
         }
 
-        const user = await User.findByIdAndUpdate(id, updateData, { new: true });
+        const user = await User.findByIdAndUpdate(id, updateData, { new: true }).select('-password');
         return response.status(200).json(user);
     });
 
     route.delete('/:id', async (request, response) => {
         const id = request.params.id;
-        const user = await User.findByIdAndDelete(id);
+        const user = await User.findByIdAndDelete(id).select('-password');
         return response.status(200).json(user);
     });
-}
+};

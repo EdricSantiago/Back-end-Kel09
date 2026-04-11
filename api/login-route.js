@@ -7,4 +7,4 @@ module.exports = (app) => {
     app.use('/auth', route);
     route.post('/register', register);
     route.post('/login', login);
-}
+};

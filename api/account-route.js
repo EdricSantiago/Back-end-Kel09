@@ -6,18 +6,21 @@ const route = express.Router();
 module.exports = (app) => {
     app.use('/accounts', route);
 
+    // retrieve all accounts data
     route.get('/', async (request, response) => {
         const account = await Account.find();
         return response.status(200).json(account);
     });
 
-    route.get('/:id', async (request, response) => {
+    // retrieve account data via ID
+    route.get('/:id', async (request, response) => { 
         const id = request.params.id;
         const account = await Account.findById(id);
         return response.status(200).json(account);
     });
 
-    route.post('/', async (request, response) => {
+    // create new account data
+    route.post('/', async (request, response) => { 
         const account = new Account({
             accountNumber: 
                 request.body.accountNumber,
@@ -30,7 +33,8 @@ module.exports = (app) => {
         return response.status(200).json(account);
     });
 
-    route.put('/:id', async (request, response) => {
+    // update account data via ID
+    route.put('/:id', async (request, response) => { 
         const id = request.params.id;
         const account = await Account.findByIdAndUpdate(id, 
             {balance : request.body.balance},
@@ -39,6 +43,7 @@ module.exports = (app) => {
         return response.status(200).json(account);
     });
 
+    // delete account data via ID
     route.delete('/:id', async (request, response) => {
         const id = request.params.id;
         const account = await Account.findByIdAndDelete(id);
