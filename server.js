@@ -8,7 +8,7 @@ connectDB().then(() => {
     console.error(err);
 });
 
-const routes = require('./api');
+const routes = require('./api/routes');
 
 const app = express();
 
