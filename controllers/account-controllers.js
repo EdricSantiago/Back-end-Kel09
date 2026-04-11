@@ -1,10 +1,11 @@
 const accountService = require('../service/account-service');
+const { successResponse, errorResponse } = require('../utils/response');
 
 const getAllAccounts = async (req, res, next) => {
     try{
         const account = await accountService.getAllAccounts();
 
-        return res.status(200).json(account);
+        return successResponse(res, 200, 'Account retrieved', account);
     }catch(err){
         return next(err);
     }
@@ -16,7 +17,7 @@ const getAccountsById = async (req, res, next) => {
 
         const account = await accountService.getAccountsById(id);
 
-        return res.status(200).json(account);
+        return successResponse(res, 200, 'Account retrieved', account);
     }catch(err){
         return next(err);
     };
@@ -25,7 +26,7 @@ const getAccountsById = async (req, res, next) => {
 const createAccounts = async (req, res, next) => {
     try{
         const newAccounts = await accountService.createAccounts(req.body);
-        return res.status(201).json(newAccounts);
+        return successResponse(res, 201, 'Account created', newAccounts);
     }catch(err){
         return next(err);
     };
@@ -37,7 +38,7 @@ const updateAccounts = async (req, res, next) => {
 
         const updateAccounts = await accountService.updateAccounts(id, req.body);
 
-        return res.status(200).json(updateAccounts);
+        return successResponse(res, 200, 'Account updated', updateAccounts);
     }catch(err){
         return next(err);
     };
@@ -49,7 +50,7 @@ const deleteAccounts = async (req, res, next) => {
 
         const deleteAccounts = await accountService.deleteAccounts(id);
 
-        return res.status(200).json(deleteAccounts);
+        return successResponse(res, 200, 'Account deleted', deleteAccounts);
     }catch(err){
         return next(err);
     }
