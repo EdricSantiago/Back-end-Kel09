@@ -1,10 +1,11 @@
+const responseError = require('../errors/response-error');
 const Account = require('../models/accountModel');
 const { v4: uuid } = require('uuid')
 
 async function getAllAccounts() {
     const account = await Account.find();
     if (!account) {
-        throw new Error("account is not found");
+        throw new responseError(404, 'account is not found');
     }
     return account;
 }
@@ -12,7 +13,7 @@ async function getAllAccounts() {
 const getAccountsById = async (id) => {
     const account = await Account.findById(id);
     if (!account) {
-        throw new Error("account is not found");
+        throw new responseError(404, 'account is not found');
     }
     return account;
 };
@@ -36,7 +37,7 @@ const updateAccounts = async (id, data) => {
         {new: true}
     );
     if (!account) {
-        throw new Error("account is not found");
+        throw new responseError(404, 'account is not found');
     }
     return account;
 };
@@ -44,7 +45,7 @@ const updateAccounts = async (id, data) => {
 const deleteAccounts = async (id) => {
     const account = await Account.findByIdAndDelete(id);
     if (!account) {
-        throw new Error("account is not found");
+        throw new responseError(404, 'account is not found');
     }
     return account;
 };
@@ -54,5 +55,6 @@ module.exports = {
     getAccountsById,
     createAccounts,
     updateAccounts,
-    deleteAccounts
+    deleteAccounts,
+    responseError
 };

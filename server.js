@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 app.use('/api', routes());
 
 app.use((error, request, response, next) =>
-    response.status(error.status || 500).json({
-    statusCode: error.status || 500,
+    response.status(error.statusCode || 500).json({
+    statusCode: error.statusCode || 500,
     error: error.code || 'UNKNOWN_ERROR',
     description: error.description || 'Unknown error',
     message: error.message || 'An error has occurred',
