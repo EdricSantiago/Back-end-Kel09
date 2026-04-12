@@ -48,7 +48,7 @@ const withdraw = async (accountId, amount) => {
     if (!account) throw new responseError(404, 'Akun tidak ditemukan');
 
     if (account.balance < amount) throw new responseError(400, 'Saldo tidak cukup');
-    if (account.balance - amount < 50000) throw new responseError(400, 'Saldo minimum Rp 50.000');
+    if (account.balance - amount < 50000) throw new responseError(400, 'Transaksi ditolak. Saldo rekening tidak boleh kurang dari Rp 50.000 setelah penarikan.');
 
     await Account.findByIdAndUpdate(accountId, { balance: account.balance - amount });
 
