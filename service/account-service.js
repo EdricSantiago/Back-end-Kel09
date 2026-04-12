@@ -1,17 +1,13 @@
 const responseError = require('../errors/response-error');
-const Account = require('../models/accountModel');
-const { v4: uuid } = require('uuid')
+const repository = require('../repository/account-repository');
 
 async function getAllAccounts() {
-    const account = await Account.find();
-    if (!account) {
-        throw new responseError(404, 'account is not found');
-    }
+    const account = await repository.findAll();
     return account;
-}
+};
 
 const getAccountsById = async (id) => {
-    const account = await Account.findById(id);
+    const account = await repository.findById(id);
     if (!account) {
         throw new responseError(404, 'account is not found');
     }
@@ -19,23 +15,12 @@ const getAccountsById = async (id) => {
 };
 
 const createAccounts = async (data) => {
-    const account = new Account({
-        accountNumber:
-            uuid(),
-        balance:
-            data.balance,
-        userId:
-            data.userId
-    });
-    await account.save();
+    const account = await repository.create(data);
     return account;
 };
 
 const updateAccounts = async (id, data) => {
-    const account = await Account.findByIdAndUpdate(id,
-        {balance: data.balance},
-        {new: true}
-    );
+    const account = await repository.update(id, data);
     if (!account) {
         throw new responseError(404, 'account is not found');
     }
@@ -43,7 +28,7 @@ const updateAccounts = async (id, data) => {
 };
 
 const deleteAccounts = async (id) => {
-    const account = await Account.findByIdAndDelete(id);
+    const account = await repository.deleteAccounts(id);
     if (!account) {
         throw new responseError(404, 'account is not found');
     }
@@ -55,6 +40,5 @@ module.exports = {
     getAccountsById,
     createAccounts,
     updateAccounts,
-    deleteAccounts,
-    responseError
+    deleteAccounts
 };
