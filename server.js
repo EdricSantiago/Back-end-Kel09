@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const connectDB = require('./config/database');
+const connectDB = require('./src/config/database');
 
 connectDB().then(() => {
     console.log("Berhasil 🔥");
@@ -8,7 +8,7 @@ connectDB().then(() => {
     console.error(err);
 });
 
-const routes = require('./api/routes');
+const routes = require('./src/api/routes');
 
 const app = express();
 
