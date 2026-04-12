@@ -1,5 +1,7 @@
 const Account = require('../models/accountModel');
-const { v4: uuid } = require('uuid')
+const mongoose = require('mongoose');
+const responseError = require('../errors/response-error'); 
+const { v4: uuid } = require('uuid');
 
 const findAll = async () => {
     const account = await Account.find();
@@ -7,6 +9,9 @@ const findAll = async () => {
 };
 
 const findById = async (id) => {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        throw new responseError(400, 'Invalid account ID');
+    }
     const account = await Account.findById(id);
     return account;
 };
@@ -25,6 +30,9 @@ const create = async (data) => {
 };
 
 const update = async (id, data) => {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        throw new responseError(400, 'Invalid account ID');
+    }
     const account = await Account.findByIdAndUpdate(id,
             {balance: data.balance},
             {new: true}
@@ -33,6 +41,9 @@ const update = async (id, data) => {
 };
 
 const deleteAccounts = async (id) => {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        throw new responseError(400, 'Invalid account ID');
+    }
     const account = await Account.findByIdAndDelete(id);
     return account
 }
