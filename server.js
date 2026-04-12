@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/database');
+const morgan = require('morgan');
 
 connectDB().then(() => {
     console.log("Berhasil 🔥");
@@ -11,6 +12,8 @@ connectDB().then(() => {
 const routes = require('./api/routes');
 
 const app = express();
+
+app.use(morgan('dev'));
 
 app.use(bodyParser.json());
 
