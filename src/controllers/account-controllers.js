@@ -24,13 +24,23 @@ const getAccountsById = async (req, res, next) => {
 };
 
 const createAccounts = async (req, res, next) => {
-    try{
-        const newAccounts = await accountService.createAccounts(req.body);
+    try {
+        const { error } = createAccountSchema.validate(req.body);
+        if (error) {
+            error.statusCode = 400;
+            return next(error);
+        }
+        const accountData = {
+            ...req.body,
+            userId: req.user.id
+        };
+        const newAccounts = await accountService.createAccounts(accountData);
         return successResponse(res, 201, 'Account created', newAccounts);
-    }catch(err){
+    } catch (err) {
         return next(err);
     };
 };
+
 
 const updateAccounts = async (req, res, next) => {
     try{

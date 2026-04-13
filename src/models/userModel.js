@@ -1,17 +1,23 @@
-const mongoose =require("mongoose");
+const mongoose = require("mongoose");
 
-const userSchema=new mongoose.Schema({
-    username:{
-        type:String,
-        required:true,
-        unique:true
-    
+const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+        unique: true
     },
-    password:
-    {
-        type:String,
-        require:true
+    password: {
+        type: String,
+        required: true
     },
+    passwordChangedAt: { 
+        type: Date 
+    }
 });
 
-module.exports=mongoose.model("User",userSchema);
+userSchema.pre('save', async function() {
+    if (!this.isModified('password') || this.isNew) return;
+    this.passwordChangedAt = Date.now() - 1000;
+});
+
+module.exports = mongoose.model("User", userSchema);
