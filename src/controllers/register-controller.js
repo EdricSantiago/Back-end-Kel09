@@ -1,4 +1,4 @@
-const registerService=require('./register-service')
+const registerService=require('../service/register-service')
 
 const register=async(req,res)=>{
     try{

@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const registerRepository = require('./register-repository');
+const registerRepository = require('../repository/register-repository');
 
 const registerUser = async (username, password) => {
     if (!username || !password) {

@@ -1,5 +1,5 @@
 const express = require('express');
-const { transfer, deposit, withdraw, getHistory } = require('./transaction-controller');
+const {transfer, deposit, withdraw, getHistory} = require('../controllers/transaction-controller');
 
 const route = express.Router();
 

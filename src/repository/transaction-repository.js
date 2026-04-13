@@ -1,5 +1,5 @@
-const Transaction = require('../../models/transactionModel');
-const Account = require('../../models/accountModel');
+const Transaction = require('../models/transactionModel');
+const Account = require('../models/accountModel');
 
 const findAccountById = async (id) => {
     return await Account.findById(id);

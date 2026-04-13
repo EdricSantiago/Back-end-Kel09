@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const loginRepository = require('./login-repository');
+const loginRepository = require('../repository/login-repository');
 
 const loginUser = async (username, password) => {
     const user = await loginRepository.findByUsername(username);

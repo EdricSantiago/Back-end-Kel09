@@ -3,7 +3,7 @@ const authRouter = require('./auth/auth-router');
 const jwtGuard = require('../middleware/jwtGuard');
 const users = require('./users-route');
 const account = require('./account-route');
-const transaction = require('./transaction/transaction-route');
+const transaction = require('./transaction-route');
 
 module.exports = () => {
     const app = express.Router();

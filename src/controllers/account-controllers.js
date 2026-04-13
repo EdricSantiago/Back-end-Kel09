@@ -25,11 +25,6 @@ const getAccountsById = async (req, res, next) => {
 
 const createAccounts = async (req, res, next) => {
     try {
-        const { error } = createAccountSchema.validate(req.body);
-        if (error) {
-            error.statusCode = 400;
-            return next(error);
-        }
         const accountData = {
             ...req.body,
             userId: req.user.id

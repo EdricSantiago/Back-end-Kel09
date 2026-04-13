@@ -1,6 +1,6 @@
-const transactionRepository = require('./transaction-repository');
-const responseError = require('../../errors/response-error');
-const Account = require('../../models/accountModel');
+const transactionRepository = require('../repository/transaction-repository');
+const responseError = require('../errors/response-error');
+const Account = require('../models/accountModel');
 
 const transfer = async (senderAccountId, receiverAccountId, amount) => {
     if (amount < 100) throw new responseError(400, 'Minimal transfer Rp 100');

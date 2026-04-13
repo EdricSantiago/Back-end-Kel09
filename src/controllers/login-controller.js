@@ -1,4 +1,4 @@
-const loginService=require('./login-service')
+const loginService=require('../service/login-service')
 
 const login=async(req,res)=>{
     try{
