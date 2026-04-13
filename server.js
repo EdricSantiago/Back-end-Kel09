@@ -3,12 +3,12 @@ const bodyParser = require('body-parser');
 const connectDB = require('./config/database');
 
 connectDB().then(() => {
-    console.log("Berhasil");
+    console.log("Berhasil 🔥");
 }).catch(() => {
     console.error(err);
 });
 
-const routes = require('./api');
+const routes = require('./api/routes');
 
 const app = express();
 
@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 app.use('/api', routes());
 
 app.use((error, request, response, next) =>
-    response.status(error.status || 500).json({
-    statusCode: error.status || 500,
+    response.status(error.statusCode || 500).json({
+    statusCode: error.statusCode || 500,
     error: error.code || 'UNKNOWN_ERROR',
     description: error.description || 'Unknown error',
     message: error.message || 'An error has occurred',

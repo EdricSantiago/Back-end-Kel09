@@ -1,34 +1,20 @@
-require('dotenv').config({ path: 'rei.env' });
-const express = require('express');
-const mongoose = require('mongoose');
-const user = require('./models/userModel');
-const transaction = require('./models/transaction');
+const server = require('./server');
 
-const User = require('./models/authModel');
-global.User = User;
-
-const app = express();
-app.use(express.json());
-const port = 3100;
-
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log('Database connected');
-
-    require('./controllers/login');
-
-    console.log('Script login.js selesai');
-  })
-  .catch(err => console.log(err));
-
-app.get('/', (req,res) =>{
-    res.send('Hello, world');
+const port = process.env.PORT || 3000;
+const app = server.listen(port, (err) => {
+    if (err) {
+    console.error('Failed to start the server.', err);
+    process.exit(1);
+    } else {
+    console.log(`Server runs at port ${port} 🚀`);
+    }
 });
 
-app.get('/about',(req,res)=>{
-    res.send('About me...');
-});
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught exception.');
 
-app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
+    app.close(() => process.exit(1));
+
+    setTimeout(() => process.abort(), 1000).unref();
+    process.exit(1);
 });

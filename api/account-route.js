@@ -1,19 +1,23 @@
 const express = require('express');
-const Account = require('../models/account');
+const accountController = require('../controllers/account-controllers');
 
 const route = express.Router();
 
 module.exports = (app) => {
     app.use('/accounts', route);
 
-    route.get('/', async (request, response) => {
-        const account = await Account.find();
-        return response.status(200).json(account);
-    });
+    // retrieve all accounts data
+    route.get('/', accountController.getAllAccounts);
 
-    route.get('/:id', async (request, response) => {
-        const id = request.params.id;
-        const account = await Account.findById(id);
-        return response.status(200).json(account);
-    })
+    // retrieve account data via ID
+    route.get('/:id', accountController.getAccountsById); 
+
+    // create new account data
+    route.post('/', accountController.createAccounts);
+
+    // update account data via ID
+    route.patch('/:id', accountController.updateAccounts);
+
+    // delete account data via ID
+    route.delete('/:id', accountController.deleteAccounts);
 }

@@ -6,9 +6,9 @@ const connectDB = async() => {
         await mongoose.connect(
             process.env.MONGODB_URI
         );
-        console.log("MongoDB terhubung.");
+        console.log("MongoDB terhubung 🍃");
     }catch (error){
-        console.log("MongoDB tidak terhubung:", error.message);
+        console.log("MongoDB tidak terhubung ❌:", error.message);
         process.exit(1);
     }
 };
