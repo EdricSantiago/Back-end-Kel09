@@ -30,8 +30,13 @@ Response body success:
 Response body fail:
 ```json
 {
-	"statusCode": 401,
-	"error": "UNAUTHORIZED",
-	"message": "Akses ditolak. Silahkan login terlebih dahulu."
+	"message": "Password salah"
+}
+```
+
+Response body fail 2:
+```json
+{
+	"message": "User tidak ditemukan"
 }
 ```
