@@ -4,6 +4,7 @@ const jwtGuard = require('../middleware/jwtGuard');
 const users = require('./users-route');
 const account = require('./account-route');
 const transaction = require('./transaction-route');
+const security = require('./security-route');
 
 module.exports = () => {
     const app = express.Router();
@@ -14,6 +15,7 @@ module.exports = () => {
     users(app);
     account(app);
     transaction(app);
+    security(app);
     
     return app;
 }
