@@ -1,6 +1,5 @@
 const accountService = require('../service/account-service');
 const {successResponse} = require('../utils/response');
-const {createAccountSchema, updateAccountSchema} = require('../validation/account-validation');
 
 const getAllAccounts = async (req, res, next) => {
     try{
@@ -25,28 +24,23 @@ const getAccountsById = async (req, res, next) => {
 };
 
 const createAccounts = async (req, res, next) => {
-    try{
-        const {error} = createAccountSchema.validate(req.body);
-        if (error){
-            error.statusCode = 400;
-            return next(error)
-        }
-        const newAccounts = await accountService.createAccounts(req.body);
+    try {
+        const accountData = {
+            ...req.body,
+            userId: req.user.id
+        };
+        const newAccounts = await accountService.createAccounts(accountData);
         return successResponse(res, 201, 'Account created', newAccounts);
-    }catch(err){
+    } catch (err) {
         return next(err);
     };
 };
 
+
 const updateAccounts = async (req, res, next) => {
     try{
         const {id} = req.params;
-
-        const {error} = updateAccountSchema.validate(req.body);
-        if (error){
-            error.statusCode = 400;
-            return next(error)
-        }
+        
         const updateAccounts = await accountService.updateAccounts(id, req.body);
 
         return successResponse(res, 200, 'Account updated', updateAccounts);
