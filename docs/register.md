@@ -7,7 +7,7 @@ Endpoint : POST api/register
 Contoh Request:
 ```json
 {
-  "username": "Louis Vebryanto",
+  "username": "Diavolo",
   "password": "GioGioAdventure" 
 }
 ```
