@@ -5,13 +5,13 @@ Dibuat dengan Node.js + Express.
 
 ---
 ## Cara menjalankan endpoint API sistem perbankan
-1-Buka VS Code kalian
-2-Clone repository kami
-3-Buka Terminal
-4-Ketik 'npm install' 
-5-Ketik 'npm run dev'
-6-Lalu buka Echo API extension for VS Code
-7-Run command endpoint yang ada di docs
+- Buka VS Code kalian
+- Clone repository kami
+- Buka Terminal
+- Ketik 'npm install' 
+- Ketik 'npm run dev'
+- Lalu buka Echo API extension for VS Code
+- Run command endpoint yang ada di docs
 ---
 ## Tujuan Proyek
 
