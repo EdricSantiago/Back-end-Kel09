@@ -1,12 +1,18 @@
 # Bank Digital
 
 Proyek backend sistem perbankan digital untuk tugas kuliah.  
-Dibuat dengan Node.js + Express (rencananya).
-
-> ⚠️ **Status: Masih dalam tahap perencanaan.**
+Dibuat dengan Node.js + Express.
 
 ---
-
+## Cara menjalankan endpoint API sistem perbankan
+- Buka VS Code kalian
+- Clone repository kami
+- Buka Terminal
+- Ketik 'npm install' 
+- Ketik 'npm run dev'
+- Lalu buka Echo API extension for VS Code
+- Run command endpoint yang ada di docs
+---
 ## Tujuan Proyek
 
 Membangun REST API sederhana untuk simulasi sistem bank digital, mencakup:
@@ -27,15 +33,16 @@ Membangun REST API sederhana untuk simulasi sistem bank digital, mencakup:
 
 ## To-Do
 
-- [ ] Setup project & install dependencies
-- [ ] Buat struktur folder
-- [ ] Endpoint autentikasi (register & login)
+- [✅️ ] Setup project & install dependencies
+- [✅️ ] Buat struktur folder
+- [✅️ ] Endpoint register & login
 - [✅️] Endpoint rekening
-- [ ] Endpoint transaksi
-- [ ] Testing dengan Postman
+- [✅️ ] Endpoint transaksi
+- [✅️ ] Testing dengan Postman
 
 ---
 
 ## Catatan
 
 Dokumentasi akan diperbarui seiring perkembangan proyek
+
