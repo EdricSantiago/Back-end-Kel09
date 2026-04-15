@@ -42,6 +42,9 @@ Membangun REST API sederhana untuk simulasi sistem bank digital, mencakup:
 
 ---
 
+## Pembagian Tugas
+- Louis(Login/Register)
+
 ## Catatan
 
 Dokumentasi akan diperbarui seiring perkembangan proyek
