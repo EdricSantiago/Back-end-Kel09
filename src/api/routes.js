@@ -5,6 +5,7 @@ const users = require('./users-route');
 const account = require('./account-route');
 const transaction = require('./transaction-route');
 const security = require('./security-route');
+const pinjaman = require('./pinjaman-route');
 
 module.exports = () => {
     const app = express.Router();
@@ -16,6 +17,7 @@ module.exports = () => {
     account(app);
     transaction(app);
     security(app);
+    pinjaman(app);
     
     return app;
 }
