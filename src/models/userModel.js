@@ -13,6 +13,18 @@ const userSchema = new mongoose.Schema({
     passwordChangedAt: { 
         type: Date 
     },
+    alamat: {
+        type: String,
+        required: true
+    },
+    umur: {
+        type:Number,
+        required: true
+    },
+    tgl_lahir:{
+        type: Date,
+        required : true
+    },
     pin:    {
         type: String,
         default : null,
