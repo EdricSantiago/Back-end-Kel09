@@ -38,7 +38,7 @@ const account = await Account.findOne({ userId });
 
     const cicilan_per_bulan = hitungCicilan(jumlah_pinjaman, tenor, BUNGA_PER_TAHUN);
 
-    const loan = await pinjamanRepository.createLoan({
+    const loan = await pinjamanRepository.createPinjaman({
         user: userId,
         accountNumber:account.accountNumber,
         username,
