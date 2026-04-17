@@ -5,8 +5,8 @@ const ajukanPinjaman = async (req,res,next) => {
     try {
         const {jumlah_pinjaman,kredit_skor,username} = req.body;
         const userId = req.user.id; 
-        const loan = await pinjamanService.ajukanPinjaman(userId, jumlah_pinjaman, kredit_skor, username);
-        return successResponse(res, 201, 'Pinjaman berhasil diajukan', loan);
+        const pinjol = await pinjamanService.ajukanPinjaman(userId, jumlah_pinjaman, kredit_skor, username);
+        return successResponse(res, 201, 'Pinjaman berhasil diajukan', pinjol);
     } catch (err) {
         next(err);
     }
@@ -15,8 +15,8 @@ const ajukanPinjaman = async (req,res,next) => {
 const getStatusPinjaman = async (req,res,next) => {
     try {
         const userId = req.user.id; 
-        const loans = await pinjamanService.getPinjamanByUser(userId);
-        return successResponse(res, 200, 'Data pinjaman berhasil diambil', loans);
+        const pinjols = await pinjamanService.getPinjamanByUser(userId);
+        return successResponse(res, 200, 'Data pinjaman berhasil diambil', pinjols);
     } catch (err) {
         next(err);
     }

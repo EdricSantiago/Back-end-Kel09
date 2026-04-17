@@ -38,8 +38,8 @@ const account = await Account.findOne({ userId });
 
     const cicilan_per_bulan = hitungCicilan(jumlah_pinjaman, tenor, BUNGA_PER_TAHUN);
 
-    const loan = await pinjamanRepository.createPinjaman({
-        user: userId,
+    const pinjol = await pinjamanRepository.createPinjaman({
+        userId,
         accountNumber:account.accountNumber,
         username,
         jumlah_pinjaman,
@@ -51,28 +51,28 @@ const account = await Account.findOne({ userId });
         cicilan_per_bulan
     });
 
-    return loan;
+    return pinjol;
 };
 
 const getPinjamanByUser = async (userId) => {
-    const loans = await pinjamanRepository.findPinjamanByUserId(userId);
+    const pinjols = await pinjamanRepository.findPinjamanByUserId(userId);
 
-    if (!loans || loans.length === 0) {
+    if (!pinjols || pinjols.length === 0) {
         const error = new Error('Belum ada pinjaman');
         error.statusCode = 404;
         throw error;
     }
 
-    return loans.map(loan => ({
-        id: loan._id,
-        username: loan.username,
-        jumlah_pinjaman: loan.jumlah_pinjaman,
-        tenor: `${loan.tenor} bulan`,
-        bunga: `${loan.bunga}% per tahun`,
-        cicilan_per_bulan: loan.cicilan_per_bulan,
-        status: loan.status,
-        tanggal_pengajuan: loan.tanggal_pengajuan,
-        tanggal_jatuh_tempo: loan.tanggal_jatuh_tempo
+    return pinjols.map(pinjol => ({
+        id: pinjol._id,
+        username: pinjol.username,
+        jumlah_pinjaman: pinjol.jumlah_pinjaman,
+        tenor: `${pinjol.tenor} bulan`,
+        bunga: `${pinjol.bunga}% per tahun`,
+        cicilan_per_bulan: pinjol.cicilan_per_bulan,
+        status: pinjol.status,
+        tanggal_pengajuan: pinjol.tanggal_pengajuan,
+        tanggal_jatuh_tempo: pinjol.tanggal_jatuh_tempo
     }));
 };
 

@@ -6,5 +6,5 @@ const route = express.Router();
 
 module.exports = (app) => {
     app.post('/pinjaman', ajukanPinjaman);  
-    app.get('/status', getStatusPinjaman);
+    app.get('/pinjaman/status', getStatusPinjaman);
 };

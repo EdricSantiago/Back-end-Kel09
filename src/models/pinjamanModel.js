@@ -5,6 +5,11 @@ const pinjamanSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
     kredit_skor:{
         type: Number,
         required: true,
@@ -24,7 +29,7 @@ const pinjamanSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    tanggal_jatuhtempo:{
+    tanggal_jatuh_tempo:{
         type: Date,
     },
     cicilan_per_bulan:{

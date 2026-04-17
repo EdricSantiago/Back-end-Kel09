@@ -10,7 +10,7 @@ const findPinjamanByAccountNumber = async (accountNumber) =>{
 };
 
 const findPinjamanByUserId = async (userId) =>{
-    return await Pinjaman.find({userId});
+    return await Pinjaman.find({userId: userId});
 };
 
 module.exports = {createPinjaman, findPinjamanByAccountNumber, findPinjamanByUserId};
