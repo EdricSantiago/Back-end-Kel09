@@ -8,10 +8,10 @@ const security = require('./security-route');
 const pinjaman = require('./pinjaman-route');
 
 module.exports = () => {
-    const app = express.Router();
+  const app = express.Router();
 
-    app.use('/auth', authRouter);
-    app.use(jwtGuard);
+  app.use('/auth', authRouter);
+  app.use(jwtGuard);
 
     users(app);
     account(app);
