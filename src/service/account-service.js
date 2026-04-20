@@ -1,4 +1,4 @@
-const responseError = require('../errors/response-error');
+const ResponseError = require('../errors/response-error');
 const repository = require('../repository/account-repository');
 
 async function getAllAccounts() {
@@ -9,7 +9,7 @@ async function getAllAccounts() {
 const getAccountsById = async (id) => {
     const account = await repository.findById(id);
     if (!account) {
-        throw new responseError(404, 'account is not found');
+        throw new ResponseError(404, 'account is not found');
     }
     return account;
 };
@@ -22,7 +22,7 @@ const createAccounts = async (data) => {
 const updateAccounts = async (id, data) => {
     const account = await repository.update(id, data);
     if (!account) {
-        throw new responseError(404, 'account is not found');
+        throw new ResponseError(404, 'account is not found');
     }
     return account;
 };
@@ -30,7 +30,7 @@ const updateAccounts = async (id, data) => {
 const deleteAccounts = async (id) => {
     const account = await repository.deleteAccounts(id);
     if (!account) {
-        throw new responseError(404, 'account is not found');
+        throw new ResponseError(404, 'account is not found');
     }
     return account;
 };

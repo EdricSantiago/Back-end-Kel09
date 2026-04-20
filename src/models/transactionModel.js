@@ -15,13 +15,13 @@ const transactionSchema = new mongoose.Schema({
 
     senderId: { 
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User', 
+        ref: 'Account', 
         default: null 
     },
 
     receiverId: { 
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User', 
+        ref: 'Account', 
         default: null 
     },
 
