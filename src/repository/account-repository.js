@@ -48,10 +48,16 @@ const deleteAccounts = async (id) => {
     return account
 }
 
+const getByUserId = async (userId) => {
+    const account = await Account.findOne({ userId: userId });
+    return account;
+};
+
 module.exports = {
     findAll,
     findById,
     create,
     update,
-    deleteAccounts
+    deleteAccounts,
+    getByUserId
 };
