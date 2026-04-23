@@ -7,7 +7,6 @@ const app = server.listen(port, (err) => {
     process.exit(1);
     } else {
     console.log(`Server runs at port ${port} 🚀`);
-    console.log(`Test log`);
     }
 });
 
