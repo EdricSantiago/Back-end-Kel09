@@ -1,5 +1,5 @@
 const express = require('express');
-const { setupPin, freezeAccount, changePin, getSecurityStatus, verifyPin } = require('../controllers/security-controller'); 
+const { setupPin, freezeAccount, changePin, getSecurityStatus ,verifyPin } = require('../controllers/security-controller'); 
 
 const route = express.Router();
 

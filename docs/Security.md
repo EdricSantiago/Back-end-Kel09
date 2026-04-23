@@ -1,5 +1,5 @@
 # Security API Spec 🔒💅
-Note: Semua endpoint di bawah ini WAJIB menyertakan Token JWT yang valid di bagian Header `Authorization: Bearer <token>`.
+Note: Semua endpoint di bawah ini WAJIB menyertakan Token JWT yang valid di bagian Header `Authorization: Bearer <token>` .
 
 
 1. Setup PIN API

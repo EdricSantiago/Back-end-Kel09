@@ -39,7 +39,7 @@ const changePin = async (req, res, next) => {
 const freezeAccount = async (req, res, next) => {
     try {
         await securityService.freezeUserAccount(req.user.id);
-        return successResponse(res, 200, 'Akun Dibekukan, Semua Transaksi Diblokir. Mohon Menghubungi Customer Service Untuk Mengaktifkan Akun Kembali.');
+        return successResponse(res, 200, 'Akun Dibekukan,Semua Transaksi Diblokir. Mohon Menghubungi Customer Service Untuk Mengaktifkan Akun Kembali.');
     } catch (err) {
         next(err);
     }

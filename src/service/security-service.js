@@ -40,7 +40,7 @@ const freezeUserAccount = async (userId) => {
 
 const changeUserPin = async (userId, oldPin, newPin) => {
     const user = await User.findById(userId);
-    if (!user) throw new ResponseError(404, 'User not found!');
+    if (!user) throw new ResponseError(404, 'User not found! ');
     if (user.isFrozen) throw new ResponseError(403, 'Akun sedang dibekukan. Tidak bisa mengganti PIN.');
 
     const isMatch = await bcrypt.compare(oldPin, user.pin);

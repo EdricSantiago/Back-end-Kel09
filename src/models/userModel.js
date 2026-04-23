@@ -36,4 +36,4 @@ userSchema.pre('save', async function() {
     this.passwordChangedAt = Date.now() - 1000;
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema );
