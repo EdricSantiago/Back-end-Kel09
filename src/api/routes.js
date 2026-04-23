@@ -12,7 +12,7 @@ const login = require('./login-route');
 const register = require('./register-route');
 
 module.exports = () => {
-    const app = express.Router();
+  const app = express.Router();
 
   app.use('/auth', authRouter); 
   login(app);
