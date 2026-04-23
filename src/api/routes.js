@@ -9,6 +9,7 @@ const pinjaman = require('./pinjaman-route');
 const pulsa = require('./pulsa-route');      
 const exchange = require('./exchange-route'); 
 
+
 module.exports = () => {
   const app = express.Router();
 
@@ -18,6 +19,9 @@ module.exports = () => {
     users(app);
     account(app);
     transaction(app);
-    
+    security(app);
+    pinjaman(app);
+    pulsa(app);
+    exchange(app);
     return app;
 }

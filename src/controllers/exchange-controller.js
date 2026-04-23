@@ -10,5 +10,5 @@ const getExchangeRates = async (req, res, next) => {
 };
   
 module.exports = {
-  getExchangeRates
+    getExchangeRates
 };
