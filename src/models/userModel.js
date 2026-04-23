@@ -13,6 +13,15 @@ const userSchema = new mongoose.Schema({
     passwordChangedAt: { 
         type: Date 
     },
+    pin:    {
+        type: String,
+        default : null,
+        select: false
+    },
+    isFrozen: {
+        type: Boolean,
+        default: false
+    },
     alamat: {
         type: String,
         required: true
@@ -25,14 +34,9 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required : true
     },
-    pin:    {
-        type: String,
-        default : null,
-        select: false
-    },
-    isFrozen: {
-        type: Boolean,
-        default: false
+    failedPinAttempts: { 
+        type: Number, 
+        default: 0 
     },
 }, { 
     timestamps: true 
@@ -44,4 +48,4 @@ userSchema.pre('save', async function() {
     this.passwordChangedAt = Date.now() - 1000;
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema );
