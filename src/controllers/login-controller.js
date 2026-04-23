@@ -1,15 +1,15 @@
 const loginService=require('../service/login-service')
+const {successResponse} = require('../utils/response');
 
 const login=async(req,res)=>{
     try{
         const{username,password}=req.body;
         const result=await loginService.loginUser(username,password);
-        res.status(200).json({message:'Login berhasil',...result});
+        return successResponse(res, 200, 'Login Berhasil',result);
     }
     catch(err)
     {
-        const status=err.statusCode||500;
-        res.status(status).json({message:err.message});
+        next(err);
     }
 };
 module.exports={login};

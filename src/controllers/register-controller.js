@@ -1,14 +1,14 @@
 const registerService=require('../service/register-service')
+const {successResponse} = require('../utils/response');
 
-const register=async(req,res)=>{
+const register=async(req,res,next)=>{
     try{
-        const{username,password}=req.body;
-        const user=await registerService.registerUser(username,password);
-        res.status(201).json({message:'Register berhasil!!',user});
+        const{username,password,alamat,umur,tgl_lahir}=req.body;
+        const user=await registerService.registerUser(username,password,alamat,umur,tgl_lahir);
+        return successResponse(res, 201, 'Register berhasil!!',user);
     }
     catch(err){
-        const status=err.statusCode||500;
-        res.status(status).json({meesage:err.message});
+        next(err);
     }
 };
 

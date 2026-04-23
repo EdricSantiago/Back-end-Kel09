@@ -12,8 +12,32 @@ const userSchema = new mongoose.Schema({
     },
     passwordChangedAt: { 
         type: Date 
-    }
+    },
+    alamat: {
+        type: String,
+        required: true
+    },
+    umur: {
+        type:Number,
+        required: true
+    },
+    tgl_lahir:{
+        type: Date,
+        required : true
+    },
+    pin:    {
+        type: String,
+        default : null,
+        select: false
+    },
+    isFrozen: {
+        type: Boolean,
+        default: false
+    },
+}, { 
+    timestamps: true 
 });
+
 
 userSchema.pre('save', async function() {
     if (!this.isModified('password') || this.isNew) return;
