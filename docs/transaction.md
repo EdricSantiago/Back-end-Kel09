@@ -1,6 +1,6 @@
 # Transaction API Spec
 
-> ⚠️ Semua endpoint di bawah membutuhkan **Authorization: Bearer \<token\>** dari hasil login.
+> Semua endpoint di bawah membutuhkan **Authorization: Bearer \<token\>** dari hasil login.
 
 ---
 
@@ -8,7 +8,7 @@
 
 Endpoint : POST api/transactions/transfer
 
-> ⚠️ Akun yang dibekukan (`isFrozen: true`) tidak dapat melakukan transfer.
+> Akun yang dibekukan (`isFrozen: true`) tidak dapat melakukan transfer.
 
 Contoh Request:
 ```json
@@ -107,7 +107,7 @@ Response body fail:
 
 Endpoint : POST api/transactions/withdraw
 
-> ⚠️ Akun yang dibekukan (`isFrozen: true`) tidak dapat melakukan penarikan.
+> Akun yang dibekukan (`isFrozen: true`) tidak dapat melakukan penarikan.
 
 Contoh Request:
 ```json
