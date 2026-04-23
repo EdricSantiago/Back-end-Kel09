@@ -13,7 +13,7 @@ Pastikan sudah terinstall di komputer kamu:
 
 **1. Clone repository**
 ```bash
-git clone https://github.com/username/Back-end-Kel09.git
+git clone https://github.com/EdricSantiago/Back-end-Kel09.git
 cd Back-end-Kel09
 ```
 
