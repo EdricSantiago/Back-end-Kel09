@@ -18,6 +18,10 @@ module.exports = () => {
     users(app);
     account(app);
     transaction(app);
+    security(app);
+    pinjaman(app);
+    pulsa(app);
+    exchange(app);
     
     return app;
 }
