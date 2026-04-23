@@ -158,4 +158,52 @@ Response body fail 2:
 
 ---
 
+## Riwayat Transaksi
 
+Endpoint : GET api/transactions/history/:accountId
+
+Contoh Request:
+
+```
+GET api/transactions/history/69de8a1f0e688ce384af60b1
+```
+
+Response body success:
+```json
+{
+  "status": "success",
+  "message": "Riwayat Transaksi",
+  "data": [
+    {
+      "_id": "69e1ad3c7cbb73ead37e9cd3",
+      "type": "tarik",
+      "amount": 50000,
+      "senderId": "69de8a1f0e688ce384af60b1",
+      "receiverId": null,
+      "status": "success",
+      "createdAt": "2026-04-16T10:10:00.000Z",
+      "updatedAt": "2026-04-16T10:10:00.000Z"
+    },
+    {
+      "_id": "69e1ac3c7cbb73ead37e9cd2",
+      "type": "setor",
+      "amount": 100000,
+      "senderId": null,
+      "receiverId": "69de8a1f0e688ce384af60b1",
+      "status": "success",
+      "createdAt": "2026-04-16T10:05:00.000Z",
+      "updatedAt": "2026-04-16T10:05:00.000Z"
+    }
+  ]
+}
+```
+
+Response body fail:
+```json
+{
+  "statusCode": 404,
+  "error": "UNKNOWN_ERROR",
+  "description": "Unknown error",
+  "message": "Akun tidak ditemukan"
+}
+```
