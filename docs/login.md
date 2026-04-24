@@ -2,7 +2,7 @@
 
 ## Post Login API
 
-Endpoint : POST api/login
+Endpoint : POST api/auth/login
 
 Contoh Request:
 ```json
