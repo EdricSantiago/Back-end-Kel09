@@ -39,10 +39,13 @@ const freezeUserAccount = async (userId) => {
 };
 
 const changeUserPin = async (userId, oldPin, newPin) => {
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).select('+pin'); 
+    
     if (!user) throw new ResponseError(404, 'User not found! ');
     if (user.isFrozen) throw new ResponseError(403, 'Akun sedang dibekukan. Tidak bisa mengganti PIN.');
-
+    if (!user.pin) {
+        throw new ResponseError(400, "PIN Belum Setup,Silahkan Buat Pin Terlebih Dahulu");
+    }
     const isMatch = await bcrypt.compare(oldPin, user.pin);
     if (!isMatch) {
         user.failedPinAttempts = (user.failedPinAttempts || 0) + 1;
@@ -66,7 +69,8 @@ const changeUserPin = async (userId, oldPin, newPin) => {
 };
 
 const verifyUserPin = async (userId, inputPin) => {
-    const user = await User.findById(userId);
+    
+    const user = await User.findById(userId).select('+pin');
     if (!user) throw new ResponseError(404, 'User not found!');
     if (user.isFrozen) throw new ResponseError(403, 'Akun sedang dibekukan.');
 
