@@ -1,7 +1,8 @@
 # Security API Spec 🔒💅
 Note: Semua endpoint di bawah ini WAJIB menyertakan Token JWT yang valid di bagian Header `Authorization: Bearer <token>` .
 
-
+10192070
+1B56Y
 1. Setup PIN API
 
 Endpoint:`POST /api/security/setup-pin`
