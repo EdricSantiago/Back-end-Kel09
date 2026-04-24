@@ -4,7 +4,6 @@ const User = require('../models/userModel');
 const jwtGuard = async (req, res, next) => {
     const authHeader = req.headers.authorization;
 
-    // 1. Better Header Check
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
         return res.status(401).json({
             statusCode: 401,
@@ -13,7 +12,6 @@ const jwtGuard = async (req, res, next) => {
         });
     }
 
-    // 2. Safer Token Extraction
     const parts = authHeader.split(' ');
     const token = parts.length === 2 ? parts[1] : null;
 
@@ -29,7 +27,6 @@ const jwtGuard = async (req, res, next) => {
             return res.status(401).json({ message: "User tidak ditemukan." });
         }
 
-        // 3. Compare Password Change Time
         if (user.passwordChangedAt) {
             const changedTimestamp = parseInt(user.passwordChangedAt.getTime() / 1000, 10);
             if (changedTimestamp > decoded.iat) { 
@@ -40,7 +37,7 @@ const jwtGuard = async (req, res, next) => {
         }
 
         req.user = decoded;
-        next(); // THIS is where the 'next is not a function' error lived if args were wrong
+        next();
     } catch (err) {
         return res.status(401).json({
             statusCode: 401,
