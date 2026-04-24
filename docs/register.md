@@ -2,7 +2,7 @@
 
 ## Register Login API
 
-Endpoint : POST api/register
+Endpoint : POST api/auth/register
 
 Contoh Request:
 ```json
