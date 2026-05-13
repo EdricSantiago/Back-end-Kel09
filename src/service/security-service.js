@@ -83,7 +83,7 @@ const verifyUserPin = async (userId, inputPin) => {
             throw new ResponseError(403, 'Akun Otomatis Dibekukan : 3x salah PIN.');
         }
         await user.save();
-        throw new ResponseError(401, `PIN Salah! Sisa percobaan: ${3 - user.failedPinAttempts}`);
+        throw new ResponseError(401, `PIN Salah! Sisa percobaan : ${3 - user.failedPinAttempts}`);
     }
 
     user.failedPinAttempts = 0;
